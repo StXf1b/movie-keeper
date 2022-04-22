@@ -1,9 +1,13 @@
 Movie keeeper!
 With login and signup!
 To get started follow the steps:
+
 1 - npm install
+
 2 - add your config in the /src/firebase/config.js
+
 3 - add in the config.js the fallowing.
+
     IMPORT THE FALLOWING IN THE /src/firebase/config.js
     
     import firebase from "firebase/app"
@@ -12,6 +16,7 @@ To get started follow the steps:
     import "firebase/storage"
     
 4 - Add your config from firebase database.
+
 5 - Add the fallowing then 
 
     // init firebase
@@ -24,4 +29,5 @@ To get started follow the steps:
     export const timestamp = firebase.firestore.Timestamp;
     
 6 - Then just type in the console npm start
+
 ENJOY!
