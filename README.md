@@ -9,7 +9,7 @@ To get started follow the steps:
 
 3 - add in the config.js the fallowing.
 
-    IMPORT THE FALLOWING IN THE /src/firebase/config.js
+   IMPORT THE FALLOWING IN THE /src/firebase/config.js
     
     import firebase from "firebase/app"
     import "firebase/auth"
