@@ -1,5 +1,6 @@
 Movie keeeper!
 With login and signup!
+Made with firebase and react.
 To get started follow the steps:
 
 1 - npm install
