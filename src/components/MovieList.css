@@ -1,0 +1,22 @@
+.movie-list {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+    grid-gap: 40px;
+}
+.movie-list .link {
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 6px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    color: inherit;
+  }
+  .movie-list h4 {
+    font-size: 0.9em;
+    color: var(--heading-color);
+}
+  .movie-list p {
+    color: var(--text-color);
+    font-size: 0.9em;
+}
