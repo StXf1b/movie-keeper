@@ -2,9 +2,10 @@ import "./MovieList.css";
 import { Link } from "react-router-dom";
 import React from 'react'
 import { useAuthContext } from "../hooks/useAuthContext";
-
+import { useFirestore } from "../hooks/useFirestore";
 export default function MovieList( { movies } ) {
     const { user } = useAuthContext();
+    const { deleteDocument } = useFirestore('movies');
   return (
     <div className="movie-list">
         {movies.length === 0 && <p>No movies yet!</p>}
@@ -18,7 +19,8 @@ export default function MovieList( { movies } ) {
                     <p>Where to watch: {movie.whereToWatch}</p>
                     <p>Description: {movie.description.substring(0, 50)}...</p>
                 </Link>
-                <a href={movie.link}><button className="btn">Watch it</button></a>
+                <a href={movie.link}><button className="btn-green">Watch</button></a>
+                <button style={{"marginLeft": "10px"}} onClick={() => deleteDocument(movie.id)} className="btn">Delete</button>
             </div>
             ) : null
         ))}

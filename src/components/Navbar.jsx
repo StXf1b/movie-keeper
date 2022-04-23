@@ -4,7 +4,7 @@ import Movie from "../assets/movie.svg"
 import { Link } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
-
+import Avatar from './Avatar';
 export default function Navbar() {
   const { user } = useAuthContext();
   const { logout, isPending } = useLogout();
@@ -28,6 +28,7 @@ export default function Navbar() {
         {user && (
           <>
           <p className='hello-user'>Hello, {user.displayName}</p>
+          <span className='nav-avatar'><Avatar src={user.photoURL} /></span>
           <li>
             {!isPending && <button className='btn' onClick={logout}>Logout</button>}
             {isPending && <button className='btn-disabled' disabled>Logging out...</button>}
