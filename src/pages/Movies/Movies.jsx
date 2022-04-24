@@ -21,7 +21,6 @@ export default function Movies() {
   const [plot, setPlot] = useState("");
   const [releaseYear, setReleaseYear] = useState("");
   const title = document && document.title;
-  // fetch this https://www.omdbapi.com/?t=${title}&apikey=d7284030 with a function
   const fetchMovie = async () => {
     
     setLoading(true);
@@ -57,7 +56,7 @@ export default function Movies() {
             <a style={{"marginTop": "5px"}} href={document.link}><button className="btn">Watch</button></a>
           </div>
           <span className="img-div">
-            <img src={movieImg} alt="" className="img" />
+            <img src={movieImg} alt="Movi Img" className="img" />
           </span>
           </>
           )}

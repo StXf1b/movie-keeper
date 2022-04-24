@@ -4,6 +4,7 @@ import Select from "react-select"
 import { useFirestore } from '../../hooks/useFirestore'
 import { useHistory } from "react-router-dom"
 import { useAuthContext } from '../../hooks/useAuthContext'
+import Info from "../../assets/info.svg"
 const categories = [
   { value: 'Netflix', label: 'Netflix' },
   { value: 'Disney+', label: 'Disney+' },
@@ -16,6 +17,11 @@ const genre = [
   { value: 'Drama', label: 'Drama' },
   { value: 'Comedy', label: 'Comedy' },
 ]
+const state = [
+  { value: 'Public', label: 'Public' },
+  { value: 'Private', label: 'Private' },
+]
+
 
 
 export default function Create() {
@@ -26,9 +32,13 @@ export default function Create() {
   const [description, setDescription] = useState("")
   const [formError, setFormError] = useState(null)
   const [link, setLink] = useState("")
+  const [visibility, setVisibility] = useState("")
+  const [isShown, setIsShown] = useState(false)
   const { user } = useAuthContext()
   const { addDocument, response } = useFirestore('movies')
   const history = useHistory()
+
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (title.length < 3) {
@@ -50,16 +60,11 @@ export default function Create() {
       releaseYear,
       description,
       link,
-      user: user.uid
+      user: user.uid,
+      visibility,
+      userName: user.displayName,
+      userPhoto: user.photoURL,
     })
-    console.log(user)
-    setTitle("")
-    setCategory(null)
-    setWhereToWatch(null)
-    setReleaseYear("")
-    setDescription("")
-    setLink("")
-    setFormError(null)
     // check if response has an error 
     if (!response.error) {
       history.push("/")
@@ -68,9 +73,10 @@ export default function Create() {
   return (
     <div>
       <h1>Add Movie To Watch</h1>
+      <hr/>
       <form onSubmit={handleSubmit}>
         <label>
-          <span>Movie Title</span>
+          <span>Movie Title(Exact Title)</span>
           <input
           required
           type="text"
@@ -89,7 +95,15 @@ export default function Create() {
           />
         </label>
         <label>
-          <span>Where To watch</span>
+          <span>Link For The Movie Or Trailer</span>
+          <input
+            value={link}
+            type="link"
+            onChange={(e) => setLink(e.target.value)}
+          />
+        </label>
+        <label>
+          <span>Where To Watch</span>
           <Select
             required
             options={categories}
@@ -98,20 +112,22 @@ export default function Create() {
           />
         </label>
         <label>
-          <span>Category</span>
+          <span>Gener</span>
           <Select
             required
             options={genre}
-            placeholder="Select a genre"
+            placeholder="Select a gener"
             onChange={(e) => setCategory(e.value)}
           />
         </label>
         <label>
-          <span>Link</span>
-          <input
-            value={link}
-            type="link"
-            onChange={(e) => setLink(e.target.value)}
+          {isShown && <div className="vis"><img src={Info} alt="Info" /><p>This sets the visibility of the movie.<br/> If you set it to true other users can see it.</p></div>}
+          <span>Visibility<img onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} className="info" src={Info} alt="info" /></span>
+          <Select
+            required
+            options={state}
+            placeholder="Select a visibility"
+            onChange={(e) => setVisibility(e.value)}
           />
         </label>
         <label>

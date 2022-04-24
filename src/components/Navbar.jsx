@@ -11,10 +11,10 @@ export default function Navbar() {
   return (
     <div className='navbar'>
       <ul>
-        <li className='logo'>
+        <Link to="/" className='logo'>
           <img src={Movie} alt="Movie Logo" />
           <span>Movie Keeper</span>
-        </li>
+        </Link>
         {!user && (
           <>
           <li>

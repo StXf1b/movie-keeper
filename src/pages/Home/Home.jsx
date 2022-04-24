@@ -8,8 +8,9 @@ export default function Home() {
     <div>
         <div className="btns">
             <Link to="./create"><button className="btn">Add Movies</button></Link>
-            <hr/>
+            <Link style={{"marginLeft": "20px"}} to="./all"><button className="btn">See All</button></Link>
         </div>
+        <hr/>
         <div className="movies">
             {documents && <MovieList movies={documents} />}
             {error && <div className="error">Error: {error.message}</div>}

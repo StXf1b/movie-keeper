@@ -6,8 +6,11 @@ import Create from "./pages/Create/Create";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import Movies from "./pages/Movies/Movies";
+import All from "./pages/All/All";
+import Profile from "./pages/Profile/Profile";
+import Settings from "./pages/Settings/Settings";
 import { useAuthContext } from './hooks/useAuthContext';
-
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const { user, authIsReady } = useAuthContext();
   return (
@@ -35,6 +38,18 @@ function App() {
             </Route>
             <Route exact path="/movies/:id">
               {user && <Movies />}
+              {!user && <Redirect to="/login" />}
+            </Route>
+            <Route exact path="/all">
+              {user && <All />}
+              {!user && <Redirect to="/login" />}
+            </Route>
+            <Route exact path="/profile/:id">
+              {user && <Profile />}
+              {!user && <Redirect to="/login" />}
+            </Route>
+            <Route exact path="/settings/:id">
+              {user && <Settings />}
               {!user && <Redirect to="/login" />}
             </Route>
             <Route exact path="*">
