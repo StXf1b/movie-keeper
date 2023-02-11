@@ -9,7 +9,7 @@ To get started follow the steps:
 
 3 - add in the config.js the fallowing.
 
-   IMPORT THE FALLOWING IN THE /src/firebase/config.js
+   IMPORT THE FOLLOWING IN THE /src/firebase/config.js
     
     import firebase from "firebase/app"
     import "firebase/auth"
@@ -18,7 +18,7 @@ To get started follow the steps:
     
 4 - Add your config from firebase database.
 
-5 - Add the fallowing then 
+5 - Add the following then 
 
     // init firebase
     firebase.initializeApp(firebaseConfig);
